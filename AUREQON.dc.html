@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-876da4d4-4322-41c7-96b6-0573fac91f99/styles.css">
+<script src="_ds/nocturne-876da4d4-4322-41c7-96b6-0573fac91f99/_ds_bundle.js"></script>
+<style>
+:root{
+  --color-bg:#0A0D12;
+  --color-surface:#11151C;
+  --surface-2:#151A22;
+  --color-text:#F7F9FC;
+  --text-2:#A7B0BE;
+  --text-3:#737D8C;
+  --color-divider:rgba(255,255,255,0.08);
+  --border-blue:rgba(23,107,255,0.30);
+  --color-accent:#176BFF;
+  --color-accent-100:#eaf1ff;
+  --color-accent-200:#cfe0ff;
+  --color-accent-300:#a9c6ff;
+  --color-accent-400:#5f96ff;
+  --color-accent-500:#176BFF;
+  --color-accent-600:#1657cc;
+  --color-accent-700:#123f95;
+  --color-accent-800:#0e2a5e;
+  --color-accent-900:#0a1b3d;
+  --color-accent-2-300:#a9c6ff;
+  --color-accent-2-800:#0e2a5e;
+  --color-section:#0b1430;
+  --color-section-glow:#16295a;
+  --edge:clamp(20px,5vw,80px);
+  --maxw:1240px;
+}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+a{color:var(--color-accent-300);text-underline-offset:3px}
+a:hover{color:var(--color-accent)}
+::selection{background:rgba(23,107,255,0.30);color:#fff}
+h1,h2,h3{text-wrap:balance}
+p{text-wrap:pretty}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+}
+@keyframes aqGrid{from{background-position:0 0,0 0}to{background-position:64px 64px,64px 64px}}
+@keyframes aqBloom{0%{transform:translate3d(0,0,0) scale(1)}100%{transform:translate3d(-3%,2%,0) scale(1.06)}}
+@keyframes aqFloatA{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
+@keyframes aqFloatB{0%,100%{transform:translateY(0)}50%{transform:translateY(9px)}}
+@keyframes aqFloatC{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes aqPulse{0%{box-shadow:0 0 0 0 rgba(48,209,120,.55)}70%{box-shadow:0 0 0 6px rgba(48,209,120,0)}100%{box-shadow:0 0 0 0 rgba(48,209,120,0)}}
+@keyframes aqDot{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus,textarea:-webkit-autofill,select:-webkit-autofill{-webkit-text-fill-color:var(--color-text);caret-color:var(--color-text);-webkit-box-shadow:0 0 0 1000px var(--surface-2,#12141f) inset!important;box-shadow:0 0 0 1000px var(--surface-2,#12141f) inset!important;transition:background-color 9999s ease-in-out 0s}
+input:autofill{background-color:transparent!important;color:var(--color-text)}
+.aq-link{position:relative;text-decoration:none}
+.aq-link::after{content:"";position:absolute;left:0;bottom:-3px;height:1px;width:100%;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.22,.61,.36,1)}
+.aq-link:hover::after{transform:scaleX(1)}
+[data-cta] .arrow{display:inline-block;transition:transform .35s cubic-bezier(.22,.61,.36,1)}
+[data-cta]:hover .arrow{transform:translateX(5px)}
+[data-card]{position:relative;overflow:hidden;transition:transform .45s cubic-bezier(.22,.61,.36,1),border-color .45s,box-shadow .45s,background .45s}
+[data-card]::before{content:"";position:absolute;inset:0;border-radius:inherit;opacity:0;transition:opacity .5s;background:radial-gradient(360px circle at var(--mx,50%) var(--my,-20%),rgba(23,107,255,.16),transparent 60%);pointer-events:none}
+[data-card]:hover::before{opacity:1}
+[data-card]:hover{transform:translateY(-5px);border-color:var(--border-blue);box-shadow:0 24px 60px -30px rgba(0,0,0,.9),0 0 0 1px var(--border-blue)}
+[data-nav] .aq-link{color:var(--text-2)}
+[data-nav] .aq-link:hover{color:var(--color-text)}
+@media (max-width:1040px){[data-nav-links]{display:none !important}}
+@media (max-width:600px){[data-nav-desc]{display:none !important}}
+@media (max-width:900px){[data-hero-grid]{grid-template-columns:1fr !important;gap:56px !important}[data-hero-visual]{max-width:560px}}
+@media (max-width:640px){[data-audit-grid]{grid-template-columns:1fr !important}[data-split-grid]{grid-template-columns:1fr !important}}
+@media (max-width:860px){[data-audit-cols]{grid-template-columns:1fr !important}}
+[data-pill]{cursor:pointer;user-select:none;transition:border-color .3s,background .3s,color .3s}
+[data-pill] input{position:absolute;opacity:0;width:0;height:0}
+/* the pills carry inline border/background/color, so these state rules must be
+   !important or they lose to the inline styles and the pill looks unclickable */
+[data-pill]:hover{border-color:var(--border-blue) !important}
+[data-pill]:has(input:checked){border-color:var(--color-accent) !important;background:color-mix(in srgb,var(--color-accent) 16%,transparent) !important;color:#eaf1ff !important}
+[data-pill]:has(input:focus-visible){outline:2px solid var(--color-accent);outline-offset:2px}
+@keyframes aqGlowPulse{0%,100%{opacity:.55;transform:translate(-50%,-50%) scale(1)}50%{opacity:.9;transform:translate(-50%,-50%) scale(1.14)}}
+</style>
+</helmet>
+<div ref="{{ setRoot }}" id="top" style="position:relative">
+
+  <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none">
+    <div data-par="0.05" style="position:absolute;top:-8%;bottom:-8%;left:0;right:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:64px 64px;opacity:.55;animation:aqGrid 70s linear infinite;will-change:background-position"></div>
+    <div style="position:absolute;inset:0;background:radial-gradient(900px 680px at 82% 3%,rgba(23,107,255,.16),transparent 55%),radial-gradient(760px 620px at 8% 24%,rgba(23,107,255,.08),transparent 52%),radial-gradient(820px 700px at 90% 52%,rgba(23,107,255,.09),transparent 54%),radial-gradient(720px 640px at 4% 78%,rgba(23,107,255,.08),transparent 52%),radial-gradient(760px 620px at 84% 97%,rgba(23,107,255,.1),transparent 54%);animation:aqBloom 26s ease-in-out infinite alternate;will-change:transform"></div>
+  </div>
+  <canvas id="aq-bg" aria-hidden="true" style="position:fixed;inset:0;z-index:0;width:100vw;height:100vh;pointer-events:none"></canvas>
+  <div id="aq-cursor" aria-hidden="true" style="position:fixed;top:0;left:0;z-index:0;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(23,107,255,.11),transparent 62%);will-change:transform;pointer-events:none"></div>
+
+  <div style="position:relative;z-index:1">
+    <header data-nav style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;gap:24px;padding:18px var(--edge);border-bottom:1px solid transparent;transition:background .45s,padding .45s,box-shadow .45s,border-color .45s">
+      <a href="#top" style="display:flex;align-items:center;gap:13px;text-decoration:none;color:var(--color-text);margin-right:auto">
+        <span style="display:grid;place-items:center;width:38px;height:38px;border-radius:10px;background:linear-gradient(160deg,rgba(23,107,255,.16),rgba(23,107,255,.03));border:1px solid var(--border-blue);box-shadow:0 8px 24px -12px rgba(23,107,255,.6)">
+          <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><path d="M6 27 L16 5 L26 27" stroke="url(#lg)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/><path d="M10.6 19.2 L21.4 19.2" stroke="url(#lg)" stroke-width="2.5" stroke-linecap="round"/><defs><linearGradient id="lg" x1="16" y1="5" x2="16" y2="27" gradientUnits="userSpaceOnUse"><stop stop-color="#7aa9ff"/><stop offset="1" stop-color="#176BFF"/></linearGradient></defs></svg>
+        </span>
+        <span style="display:flex;flex-direction:column;line-height:1">
+          <span style="font-family:var(--font-heading);font-weight:600;font-size:18px;letter-spacing:.15em">AURE<span style="color:var(--color-accent)">Q</span>ION</span>
+          <span data-nav-desc style="font-size:9px;letter-spacing:.34em;color:var(--text-3);margin-top:5px;white-space:nowrap">DIGITAL GROWTH &amp; AI</span>
+        </span>
+      </a>
+      <nav data-nav-links aria-label="Primary" style="display:flex;gap:30px;align-items:center">
+        <a class="aq-link" href="#services" style="font-size:14px">Services</a>
+        <a class="aq-link" href="#why" style="font-size:14px">Why Aureqion</a>
+        <a class="aq-link" href="#process" style="font-size:14px">Process</a>
+        <a class="aq-link" href="#work" style="font-size:14px">Work</a>
+        <a class="aq-link" href="#audit" style="font-size:14px">About</a>
+      </nav>
+      <a data-cta href="#audit" class="btn btn-primary" style="padding:11px 18px;font-size:13.5px;color:#eaf1ff;background:color-mix(in srgb,var(--color-accent) 15%,transparent);box-shadow:0 12px 30px -14px rgba(23,107,255,.6);transition:transform .3s,background .3s,box-shadow .3s;white-space:nowrap" style-hover="transform:translateY(-1px);background:color-mix(in srgb,var(--color-accent) 24%,transparent);box-shadow:0 16px 36px -14px rgba(23,107,255,.75)">Get a free website audit <span class="arrow" style="font-size:15px">→</span></a>
+    </header>
+
+    <main>
+      <section style="max-width:var(--maxw);margin:0 auto;padding:clamp(128px,17vh,190px) var(--edge) clamp(70px,9vw,120px)">
+        <div data-hero-grid style="display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,0.98fr);gap:clamp(40px,5vw,84px);align-items:center">
+          <div>
+            <div data-reveal style="display:inline-flex;align-items:center;gap:13px;margin-bottom:30px">
+              <span style="width:38px;height:1px;background:var(--color-accent)"></span>
+              <span style="font-size:12.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--color-accent-300);white-space:nowrap">Digital Growth &amp; AI</span>
+            </div>
+            <h1 data-reveal data-delay="90" style="font-family:var(--font-heading);font-weight:600;font-size:clamp(40px,5.8vw,74px);line-height:1.02;letter-spacing:-0.025em;margin:0">We build digital experiences that <span style="background:linear-gradient(120deg,#5f96ff,#176BFF);-webkit-background-clip:text;background-clip:text;color:transparent">grow businesses.</span></h1>
+            <p data-reveal data-delay="180" style="margin:30px 0 0;max-width:38ch;font-size:clamp(16px,1.2vw,18.5px);line-height:1.65;color:var(--text-2)">From high-converting websites and AI chatbots to SEO, automation and ongoing optimization — AUREQION gives your business the digital infrastructure it needs to compete and grow.</p>
+            <div data-reveal data-delay="270" style="display:flex;flex-wrap:wrap;gap:16px;margin-top:38px">
+              <a data-cta href="#audit" class="btn btn-primary" style="padding:15px 24px;font-size:15px;color:#eef4ff;background:color-mix(in srgb,var(--color-accent) 16%,transparent);box-shadow:0 16px 40px -14px rgba(23,107,255,.6);transition:transform .3s,background .3s,box-shadow .3s" style-hover="transform:translateY(-2px);background:color-mix(in srgb,var(--color-accent) 26%,transparent);box-shadow:0 22px 48px -14px rgba(23,107,255,.8)">Get a free website audit <span class="arrow" style="font-size:16px">→</span></a>
+              <a data-cta href="#services" class="btn btn-secondary" style="padding:15px 22px;font-size:15px;color:var(--color-text);border-color:var(--color-divider);transition:transform .3s,border-color .3s,background .3s" style-hover="transform:translateY(-2px);border-color:var(--border-blue);background:rgba(255,255,255,.03)">Explore our services <span class="arrow">→</span></a>
+            </div>
+            <p data-reveal data-delay="360" style="margin:26px 0 0;font-size:13px;letter-spacing:.02em;color:var(--text-3)">No obligation &nbsp;•&nbsp; Built around your business &nbsp;•&nbsp; Serving businesses across the USA</p>
+          </div>
+
+          <div data-reveal="scale" data-delay="200" data-hero-visual style="position:relative;perspective:1600px">
+            <div style="position:relative;transform:rotateY(-13deg) rotateX(6deg);transform-style:preserve-3d;border-radius:16px;background:linear-gradient(180deg,#12161e,#0c1017);border:1px solid var(--color-divider);box-shadow:0 50px 120px -50px rgba(0,0,0,.95),0 0 0 1px rgba(255,255,255,.02),0 0 90px -50px rgba(23,107,255,.5)">
+              <div style="display:flex;align-items:center;gap:8px;padding:13px 16px;border-bottom:1px solid var(--color-divider)">
+                <span style="width:10px;height:10px;border-radius:50%;background:#33373f"></span><span style="width:10px;height:10px;border-radius:50%;background:#33373f"></span><span style="width:10px;height:10px;border-radius:50%;background:#33373f"></span>
+                <span style="margin-left:12px;flex:1;height:22px;border-radius:6px;background:var(--color-bg);border:1px solid var(--color-divider);display:flex;align-items:center;padding:0 10px;font-size:10.5px;color:var(--text-3)">meridian-hvac.com</span>
+              </div>
+              <div style="padding:20px">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+                  <span style="font-family:var(--font-heading);font-weight:600;font-size:13px;letter-spacing:.02em;color:var(--color-text)">Meridian HVAC</span>
+                  <span style="display:flex;gap:12px"><span style="width:26px;height:5px;border-radius:3px;background:rgba(255,255,255,.1)"></span><span style="width:26px;height:5px;border-radius:3px;background:rgba(255,255,255,.1)"></span><span style="width:26px;height:5px;border-radius:3px;background:var(--color-accent);opacity:.7"></span></span>
+                </div>
+                <div style="height:6px;width:72%;border-radius:4px;background:linear-gradient(90deg,rgba(255,255,255,.85),rgba(255,255,255,.4));margin-bottom:9px"></div>
+                <div style="height:6px;width:50%;border-radius:4px;background:rgba(255,255,255,.16);margin-bottom:18px"></div>
+                <div style="display:inline-flex;white-space:nowrap;padding:7px 13px;border-radius:7px;background:var(--color-accent);font-size:10.5px;font-weight:600;color:#fff;box-shadow:0 8px 20px -8px rgba(23,107,255,.7);margin-bottom:20px">Book a service call</div>
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+                  <div style="height:52px;border-radius:9px;background:var(--surface-2);border:1px solid var(--color-divider)"></div>
+                  <div style="height:52px;border-radius:9px;background:var(--surface-2);border:1px solid var(--color-divider)"></div>
+                  <div style="height:52px;border-radius:9px;background:var(--surface-2);border:1px solid var(--color-divider)"></div>
+                </div>
+              </div>
+            </div>
+            <div style="position:absolute;top:-26px;left:-28px;display:flex;align-items:center;gap:9px;padding:11px 15px;border-radius:12px;background:rgba(17,21,28,.86);border:1px solid var(--color-divider);box-shadow:0 20px 44px -22px rgba(0,0,0,.9);backdrop-filter:blur(8px);animation:aqFloatA 7s ease-in-out infinite">
+              <span style="width:9px;height:9px;border-radius:50%;background:#30d178;animation:aqPulse 2.4s infinite"></span>
+              <div style="line-height:1.25"><div style="font-size:12px;font-weight:600;color:var(--color-text)">AI Assistant</div><div style="font-size:10.5px;color:var(--text-3)">Online</div></div>
+            </div>
+            <div style="position:absolute;top:20%;right:-6px;padding:12px 16px;border-radius:12px;background:rgba(17,21,28,.86);border:1px solid var(--border-blue);box-shadow:0 20px 44px -22px rgba(0,0,0,.9),0 0 40px -20px rgba(23,107,255,.6);backdrop-filter:blur(8px);animation:aqFloatB 8.5s ease-in-out infinite">
+              <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:4px">SEO Score</div>
+              <div style="font-family:var(--font-heading);font-weight:600;font-size:26px;color:var(--color-text)"><span data-count="98">98</span></div>
+            </div>
+            <div style="position:absolute;bottom:-24px;left:6%;padding:12px 16px;border-radius:12px;background:rgba(17,21,28,.86);border:1px solid var(--color-divider);box-shadow:0 20px 44px -22px rgba(0,0,0,.9);backdrop-filter:blur(8px);animation:aqFloatC 9s ease-in-out infinite">
+              <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:4px">Organic Traffic</div>
+              <div style="font-family:var(--font-heading);font-weight:600;font-size:20px;color:var(--color-text)"><span style="color:#30d178">↑</span> <span data-count="42" data-suffix="%">42%</span></div>
+            </div>
+            <div style="position:absolute;bottom:12%;right:-4px;padding:12px 16px;border-radius:12px;background:rgba(17,21,28,.86);border:1px solid var(--color-divider);box-shadow:0 20px 44px -22px rgba(0,0,0,.9);backdrop-filter:blur(8px);animation:aqFloatA 7.8s ease-in-out infinite">
+              <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:4px">New Leads</div>
+              <div style="font-family:var(--font-heading);font-weight:600;font-size:20px;color:var(--color-accent-300)"><span data-prefix="+" data-count="31" data-suffix="%">+31%</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section aria-label="Capabilities" style="max-width:var(--maxw);margin:0 auto;padding:0 var(--edge) clamp(60px,8vw,96px)">
+        <div style="height:1px;background:linear-gradient(to right,transparent,var(--color-divider) 48px,var(--color-divider) calc(100% - 48px),transparent);margin-bottom:40px"></div>
+        <p data-reveal style="text-align:center;font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-3);margin:0 0 28px">Everything your business needs to grow online</p>
+        <div data-reveal data-delay="120" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 0">
+          <span style="padding:0 clamp(14px,2.4vw,32px);font-family:var(--font-heading);font-weight:500;font-size:clamp(13px,1.15vw,15px);letter-spacing:.06em;color:var(--text-2)">WEB DEVELOPMENT</span>
+          <span style="width:1px;height:14px;background:var(--color-divider)"></span>
+          <span style="padding:0 clamp(14px,2.4vw,32px);font-family:var(--font-heading);font-weight:500;font-size:clamp(13px,1.15vw,15px);letter-spacing:.06em;color:var(--text-2)">AI AUTOMATION</span>
+          <span style="width:1px;height:14px;background:var(--color-divider)"></span>
+          <span style="padding:0 clamp(14px,2.4vw,32px);font-family:var(--font-heading);font-weight:500;font-size:clamp(13px,1.15vw,15px);letter-spacing:.06em;color:var(--text-2)">SEO</span>
+          <span style="width:1px;height:14px;background:var(--color-divider)"></span>
+          <span style="padding:0 clamp(14px,2.4vw,32px);font-family:var(--font-heading);font-weight:500;font-size:clamp(13px,1.15vw,15px);letter-spacing:.06em;color:var(--text-2)">CONVERSION</span>
+          <span style="width:1px;height:14px;background:var(--color-divider)"></span>
+          <span style="padding:0 clamp(14px,2.4vw,32px);font-family:var(--font-heading);font-weight:500;font-size:clamp(13px,1.15vw,15px);letter-spacing:.06em;color:var(--text-2)">PERFORMANCE</span>
+          <span style="width:1px;height:14px;background:var(--color-divider)"></span>
+          <span style="padding:0 clamp(14px,2.4vw,32px);font-family:var(--font-heading);font-weight:500;font-size:clamp(13px,1.15vw,15px);letter-spacing:.06em;color:var(--text-2)">MAINTENANCE</span>
+        </div>
+        <div style="height:1px;background:linear-gradient(to right,transparent,var(--color-divider) 48px,var(--color-divider) calc(100% - 48px),transparent);margin-top:40px"></div>
+      </section>
+      <section id="problem" style="max-width:var(--maxw);margin:0 auto;padding:clamp(46px,6vw,80px) var(--edge)">
+        <div data-reveal style="max-width:840px;margin-bottom:clamp(46px,6vw,74px)">
+          <div style="display:inline-flex;align-items:center;gap:13px;margin-bottom:24px">
+            <span style="width:34px;height:1px;background:var(--color-accent)"></span>
+            <span style="font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--color-accent-300)">The problem</span>
+          </div>
+          <h2 style="font-family:var(--font-heading);font-weight:500;font-size:clamp(30px,4.4vw,52px);letter-spacing:-0.02em;line-height:1.06;margin:0">
+            <span style="display:block">Your website shouldn't just exist.</span>
+            <span style="display:block;color:var(--text-2)">It should <span style="color:var(--color-text)">work</span> for your business.</span>
+          </h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:0 clamp(28px,4vw,60px)">
+          <div data-reveal style="display:flex;flex-direction:column;gap:14px;padding:26px 0;border-top:1px solid var(--color-divider);transition:border-color .4s,transform .4s" style-hover="border-top-color:var(--border-blue);transform:translateY(-3px)">
+            <span style="display:grid;place-items:center;width:44px;height:44px;border-radius:11px;background:var(--surface-2);border:1px solid var(--color-divider);color:var(--color-accent-300)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span>
+            <div style="font-family:var(--font-heading);font-weight:500;font-size:16.5px;color:var(--color-text)">An outdated website</div>
+            <div style="font-size:13.5px;line-height:1.55;color:var(--text-3)">A dated design quietly tells visitors your business is behind the times.</div>
+          </div>
+          <div data-reveal data-delay="60" style="display:flex;flex-direction:column;gap:14px;padding:26px 0;border-top:1px solid var(--color-divider);transition:border-color .4s,transform .4s" style-hover="border-top-color:var(--border-blue);transform:translateY(-3px)">
+            <span style="display:grid;place-items:center;width:44px;height:44px;border-radius:11px;background:var(--surface-2);border:1px solid var(--color-divider);color:var(--color-accent-300)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19a8 8 0 1 1 16 0"/><path d="M12 15l4.5-4"/></svg></span>
+            <div style="font-family:var(--font-heading);font-weight:500;font-size:16.5px;color:var(--color-text)">Slow loading</div>
+            <div style="font-size:13.5px;line-height:1.55;color:var(--text-3)">Every extra second of load time sends potential customers back to Google.</div>
+          </div>
+          <div data-reveal data-delay="120" style="display:flex;flex-direction:column;gap:14px;padding:26px 0;border-top:1px solid var(--color-divider);transition:border-color .4s,transform .4s" style-hover="border-top-color:var(--border-blue);transform:translateY(-3px)">
+            <span style="display:grid;place-items:center;width:44px;height:44px;border-radius:11px;background:var(--surface-2);border:1px solid var(--color-divider);color:var(--color-accent-300)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/></svg></span>
+            <div style="font-family:var(--font-heading);font-weight:500;font-size:16.5px;color:var(--color-text)">A poor mobile experience</div>
+            <div style="font-size:13.5px;line-height:1.55;color:var(--text-3)">Most local searches happen on phones — a clumsy mobile site loses them instantly.</div>
+          </div>
+          <div data-reveal style="display:flex;flex-direction:column;gap:14px;padding:26px 0;border-top:1px solid var(--color-divider);transition:border-color .4s,transform .4s" style-hover="border-top-color:var(--border-blue);transform:translateY(-3px)">
+            <span style="display:grid;place-items:center;width:44px;height:44px;border-radius:11px;background:var(--surface-2);border:1px solid var(--color-divider);color:var(--color-accent-300)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg></span>
+            <div style="font-family:var(--font-heading);font-weight:500;font-size:16.5px;color:var(--color-text)">Low Google visibility</div>
+            <div style="font-size:13.5px;line-height:1.55;color:var(--text-3)">If you're not on page one, customers are finding your competitors instead.</div>
+          </div>
+          <div data-reveal data-delay="60" style="display:flex;flex-direction:column;gap:14px;padding:26px 0;border-top:1px solid var(--color-divider);transition:border-color .4s,transform .4s" style-hover="border-top-color:var(--border-blue);transform:translateY(-3px)">
+            <span style="display:grid;place-items:center;width:44px;height:44px;border-radius:11px;background:var(--surface-2);border:1px solid var(--color-divider);color:var(--color-accent-300)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l13 6.5-5.5 2L11 17z"/></svg></span>
+            <div style="font-family:var(--font-heading);font-weight:500;font-size:16.5px;color:var(--color-text)">Visitors don't convert</div>
+            <div style="font-size:13.5px;line-height:1.55;color:var(--text-3)">Traffic means nothing when nobody calls, books, or fills out a form.</div>
+          </div>
+<div data-reveal style="display:flex;flex-direction:column;gap:14px;padding:26px 0;border-top:1px solid var(--color-divider);transition:border-color .4s,transform .4s" style-hover="border-top-color:var(--border-blue);transform:translateY(-3px)">
+            <span style="display:grid;place-items:center;width:44px;height:44px;border-radius:11px;background:var(--surface-2);border:1px solid var(--color-divider);color:var(--color-accent-300)"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16l-6 7v6l-4-2v-4z"/></svg></span>
+            <div style="font-family:var(--font-heading);font-weight:500;font-size:16.5px;color:var(--color-text)">No lead generation</div>
+            <div style="font-size:13.5px;line-height:1.55;color:var(--text-3)">No clear path from "just looking" to "ready to talk" leaves money on the table.</div>
+          </div>
+        </div>
+        <div data-reveal style="margin-top:clamp(50px,7vw,84px);display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center">
+          <span style="width:1px;height:50px;background:linear-gradient(var(--color-accent),transparent)"></span>
+          <p style="margin:0;font-family:var(--font-heading);font-weight:500;font-size:clamp(21px,2.6vw,32px);letter-spacing:-0.01em;color:var(--text-2)">That's where <span style="color:var(--color-text)">AURE<span style="color:var(--color-accent)">Q</span>ION</span> comes in.</p>
+        </div>
+      </section>
+      <section id="services" style="max-width:var(--maxw);margin:0 auto;padding:clamp(46px,6vw,80px) var(--edge)">
+        <div style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr);gap:clamp(24px,4vw,64px);align-items:end;margin-bottom:clamp(44px,5vw,68px)">
+          <div data-reveal>
+            <div style="display:inline-flex;align-items:center;gap:13px;margin-bottom:24px">
+              <span style="width:34px;height:1px;background:var(--color-accent)"></span>
+              <span style="font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--color-accent-300)">Services</span>
+            </div>
+            <h2 style="font-family:var(--font-heading);font-weight:500;font-size:clamp(30px,4.4vw,52px);letter-spacing:-0.02em;line-height:1.06;margin:0">
+              <span style="display:block">One partner.</span>
+              <span style="display:block">Everything <span style="color:var(--color-accent-300)">digital.</span></span>
+            </h2>
+          </div>
+          <p data-reveal data-delay="120" style="margin:0 0 6px;font-size:15.5px;line-height:1.65;color:var(--text-2)">From the first pixel to ongoing growth, AUREQION handles the full digital stack — so you're never juggling five vendors to keep one website working.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(316px,1fr));gap:clamp(16px,1.6vw,22px)">
+          <article data-card data-reveal style="display:flex;flex-direction:column;gap:16px;padding:32px 30px;border-radius:16px;background:linear-gradient(180deg,var(--color-surface),#0d1119);border:1px solid var(--color-divider)">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <span style="font-family:var(--font-heading);font-weight:600;font-size:14px;letter-spacing:.14em;color:var(--color-accent)">01</span>
+              <span style="display:grid;place-items:center;width:46px;height:46px;border-radius:12px;background:var(--surface-2);border:1px solid var(--color-divider);color:var(--color-accent-300)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 8h18"/><path d="M9 13l-1.5 1.5L9 16M15 13l1.5 1.5L15 16"/></svg></span>
+            </div>
+            <h3 style="font-family:var(--font-heading);font-weight:500;font-size:20px;letter-spacing:-0.01em;line-height:1.2;margin:0">Website Design &amp; Development</h3>
+            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--text-2)">Modern, responsive websites designed around your brand and your business goals — not a template someone else already used.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:8px">
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">Custom Development</span>
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">Responsive Design</span>
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">Landing Pages</span>
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">E-commerce</span>
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">Performance</span>
+            </div>
+          </article>
+          <article data-card data-reveal data-delay="80" style="display:flex;flex-direction:column;gap:16px;padding:32px 30px;border-radius:16px;background:linear-gradient(180deg,var(--color-surface),#0d1119);border:1px solid var(--color-divider)">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <span style="font-family:var(--font-heading);font-weight:600;font-size:14px;letter-spacing:.14em;color:var(--color-accent)">02</span>
+              <span style="display:grid;place-items:center;width:46px;height:46px;border-radius:12px;background:var(--surface-2);border:1px solid var(--color-divider);color:var(--color-accent-300)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="3"/><path d="M12 7V4"/><circle cx="12" cy="3" r="1"/><path d="M9 12v2M15 12v2"/><path d="M4 12H2M22 12h-2"/></svg></span>
+            </div>
+            <h3 style="font-family:var(--font-heading);font-weight:500;font-size:20px;letter-spacing:-0.01em;line-height:1.2;margin:0">AI Chatbots &amp; Automation</h3>
+            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--text-2)">Turn your website into an intelligent customer experience that answers, qualifies and books — around the clock.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:8px">
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">24/7 AI Chatbots</span>
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">Lead Qualification</span>
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">FAQ Automation</span>
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">Appointment Assist</span>
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">Workflow Automation</span>
+            </div>
+          </article>
+          <article data-card data-reveal data-delay="160" style="display:flex;flex-direction:column;gap:16px;padding:32px 30px;border-radius:16px;background:linear-gradient(180deg,var(--color-surface),#0d1119);border:1px solid var(--color-divider)">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <span style="font-family:var(--font-heading);font-weight:600;font-size:14px;letter-spacing:.14em;color:var(--color-accent)">03</span>
+              <span style="display:grid;place-items:center;width:46px;height:46px;border-radius:12px;background:var(--surface-2);border:1px solid var(--color-divider);color:var(--color-accent-300)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16l5-5 3 3 7-8"/><path d="M17 6h4v4"/></svg></span>
+            </div>
+            <h3 style="font-family:var(--font-heading);font-weight:500;font-size:20px;letter-spacing:-0.01em;line-height:1.2;margin:0">SEO &amp; Search Visibility</h3>
+            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--text-2)">Help customers discover your business at the exact moment they're searching for what you do.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:8px">
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">Technical SEO</span>
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">On-Page SEO</span>
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">Local SEO</span>
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">Keyword Strategy</span>
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">Monitoring</span>
+            </div>
+          </article>
+          <article data-card data-reveal style="display:flex;flex-direction:column;gap:16px;padding:32px 30px;border-radius:16px;background:linear-gradient(180deg,var(--color-surface),#0d1119);border:1px solid var(--color-divider)">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <span style="font-family:var(--font-heading);font-weight:600;font-size:14px;letter-spacing:.14em;color:var(--color-accent)">04</span>
+              <span style="display:grid;place-items:center;width:46px;height:46px;border-radius:12px;background:var(--surface-2);border:1px solid var(--color-divider);color:var(--color-accent-300)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19l3-1L18 8l-2-2L6 16z"/><path d="M14 6l2 2"/><path d="M5 19l-.5-2.5"/></svg></span>
+            </div>
+            <h3 style="font-family:var(--font-heading);font-weight:500;font-size:20px;letter-spacing:-0.01em;line-height:1.2;margin:0">Website Redesign</h3>
+            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--text-2)">Turn an outdated website into a modern digital experience that finally reflects how good your business actually is.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:8px">
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">UI/UX Redesign</span>
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">Mobile Optimization</span>
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">Performance</span>
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">Conversion</span>
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">Brand Modernization</span>
+            </div>
+          </article>
+          <article data-card data-reveal data-delay="80" style="display:flex;flex-direction:column;gap:16px;padding:32px 30px;border-radius:16px;background:linear-gradient(180deg,var(--color-surface),#0d1119);border:1px solid var(--color-divider)">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <span style="font-family:var(--font-heading);font-weight:600;font-size:14px;letter-spacing:.14em;color:var(--color-accent)">05</span>
+              <span style="display:grid;place-items:center;width:46px;height:46px;border-radius:12px;background:var(--surface-2);border:1px solid var(--color-divider);color:var(--color-accent-300)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3"/></svg></span>
+            </div>
+            <h3 style="font-family:var(--font-heading);font-weight:500;font-size:20px;letter-spacing:-0.01em;line-height:1.2;margin:0">Conversion &amp; Lead Generation</h3>
+            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--text-2)">Websites engineered to turn everyday traffic into booked calls, filled forms and real opportunities.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:8px">
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">Conversion Strategy</span>
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">CTA Optimization</span>
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">Lead Forms</span>
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">Landing Pages</span>
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">Analytics</span>
+            </div>
+          </article>
+          <article data-card data-reveal data-delay="160" style="display:flex;flex-direction:column;gap:16px;padding:32px 30px;border-radius:16px;background:linear-gradient(180deg,var(--color-surface),#0d1119);border:1px solid var(--color-divider)">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <span style="font-family:var(--font-heading);font-weight:600;font-size:14px;letter-spacing:.14em;color:var(--color-accent)">06</span>
+              <span style="display:grid;place-items:center;width:46px;height:46px;border-radius:12px;background:var(--surface-2);border:1px solid var(--color-divider);color:var(--color-accent-300)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4-3 7.5-7 9-4-1.5-7-5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span>
+            </div>
+            <h3 style="font-family:var(--font-heading);font-weight:500;font-size:20px;letter-spacing:-0.01em;line-height:1.2;margin:0">Ongoing Website Care</h3>
+            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--text-2)">Your digital presence should keep improving after launch. We keep it fast, secure and always getting better.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:8px">
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">Updates</span>
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">Security</span>
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">Backups</span>
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">Monitoring</span>
+              <span style="font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid var(--color-divider);color:var(--text-2)">Continuous Optimization</span>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section id="work" style="max-width:var(--maxw);margin:0 auto;padding:clamp(46px,6vw,80px) var(--edge)">
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,0.85fr);gap:clamp(20px,4vw,60px);align-items:end;margin-bottom:clamp(36px,4vw,52px)">
+          <div data-reveal>
+            <div style="display:inline-flex;align-items:center;gap:13px;margin-bottom:24px">
+              <span style="width:34px;height:1px;background:var(--color-accent)"></span>
+              <span style="font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--color-accent-300)">The transformation</span>
+            </div>
+            <h2 style="font-family:var(--font-heading);font-weight:500;font-size:clamp(30px,4.4vw,52px);letter-spacing:-0.02em;line-height:1.06;margin:0">
+              <span style="display:block">From outdated</span>
+              <span style="display:block">to <span style="color:var(--color-accent-300)">outstanding.</span></span>
+            </h2>
+          </div>
+          <p data-reveal data-delay="120" style="margin:0 0 4px;font-size:15px;line-height:1.65;color:var(--text-2)">Same business. Same services. A completely different first impression. Drag the handle to see what a redesign really changes.</p>
+        </div>
+
+        <div data-reveal="scale" style="position:relative">
+          <div data-widget="slider" role="slider" tabindex="0" aria-label="Before and after website comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="52" style="position:relative;width:100%;aspect-ratio:16/10;border-radius:16px;overflow:hidden;border:1px solid var(--color-divider);box-shadow:0 40px 100px -50px rgba(0,0,0,.95),0 0 0 1px rgba(255,255,255,.02);cursor:ew-resize;user-select:none;touch-action:none;background:#0b0f16">
+
+            <div aria-hidden="true" style="position:absolute;inset:0;background:#e8e5de;color:#26364d;font-family:'Times New Roman',Times,serif;overflow:hidden">
+              <div style="background:#1b3a6b;color:#fff;text-align:center;padding:5px;font-size:clamp(9px,1.1vw,12px);letter-spacing:.03em">★ 24 HOUR EMERGENCY SERVICE ★ CALL NOW ★</div>
+              <div style="text-align:center;padding:clamp(14px,3vw,30px) 16px 8px"><div style="font-size:clamp(18px,3vw,34px);font-weight:700;color:#12315f">Bob's Plumbing Services LLC</div><div style="color:#9a1b1b;font-size:clamp(11px,1.6vw,17px);font-weight:700;margin-top:4px">Serving the area since 1998 &mdash; Free Estimates!</div></div>
+              <div style="text-align:center;margin:8px 0"><span style="display:inline-block;background:linear-gradient(#ffd34d,#e0a800);border:2px outset #c99b00;padding:6px 18px;font-weight:700;color:#4a2d00;font-size:clamp(11px,1.5vw,16px)">CLICK HERE FOR SPECIALS!</span></div>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:10px clamp(14px,3vw,34px);font-size:clamp(8px,1.2vw,12px);line-height:1.35">
+                <div><u style="color:#0a1fb0">Home</u><br/><u style="color:#0a1fb0">Services</u><br/><u style="color:#0a1fb0">About Us</u><br/><u style="color:#0a1fb0">Contact</u></div>
+                <div>We do drains, water heaters, leaks, and repiping. Licensed &amp; bonded. Please call for an appointment today!!!</div>
+                <div style="text-align:center;border:1px solid #b7b1a4;padding:4px;background:#fff">Visitors:<br/><span style="font-family:monospace;background:#000;color:#0f0;padding:1px 4px">000247</span></div>
+              </div>
+              <div style="position:absolute;left:14px;bottom:10px;font-size:clamp(8px,1vw,11px);color:#6b6559">Best viewed in 1024×768</div>
+            </div>
+
+            <div data-slider-after aria-hidden="true" style="position:absolute;inset:0;clip-path:inset(0 48% 0 0);background:radial-gradient(700px 420px at 78% -10%,rgba(23,107,255,.16),transparent 60%),linear-gradient(180deg,#0c1119,#080b10);color:#F7F9FC;overflow:hidden">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:clamp(12px,2vw,20px) clamp(16px,3vw,30px)">
+                <span style="font-family:var(--font-heading);font-weight:600;font-size:clamp(11px,1.5vw,16px);letter-spacing:.02em">Bob's Plumbing</span>
+                <span style="display:flex;align-items:center;gap:clamp(8px,1.6vw,18px);font-size:clamp(8px,1.1vw,12px);color:var(--text-2)"><span>Services</span><span>Reviews</span><span style="padding:5px 12px;border-radius:8px;background:var(--color-accent);color:#fff;font-weight:600">Book now</span></span>
+              </div>
+              <div style="padding:clamp(10px,2.4vw,34px) clamp(16px,3vw,30px)">
+                <div style="font-family:var(--font-heading);font-weight:600;font-size:clamp(18px,3.4vw,40px);line-height:1.05;letter-spacing:-0.02em;max-width:16ch">Fast, reliable plumbing — <span style="color:var(--color-accent-300)">done right.</span></div>
+                <div style="font-size:clamp(9px,1.3vw,14px);color:var(--text-2);margin-top:clamp(6px,1.2vw,14px);max-width:34ch;line-height:1.5">Same-day service across the valley. Book online in under a minute — no phone tag.</div>
+                <div style="display:flex;gap:10px;margin-top:clamp(10px,1.8vw,20px)"><span style="padding:clamp(6px,1vw,11px) clamp(12px,1.8vw,20px);border-radius:9px;background:var(--color-accent);color:#fff;font-weight:600;font-size:clamp(9px,1.2vw,13px);box-shadow:0 12px 26px -10px rgba(23,107,255,.7)">Book a service</span><span style="padding:clamp(6px,1vw,11px) clamp(12px,1.8vw,20px);border-radius:9px;border:1px solid var(--color-divider);font-size:clamp(9px,1.2vw,13px);color:var(--text-2)">Call now</span></div>
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:clamp(12px,2.2vw,26px)"><div style="height:clamp(38px,6vw,66px);border-radius:10px;background:var(--surface-2);border:1px solid var(--color-divider)"></div><div style="height:clamp(38px,6vw,66px);border-radius:10px;background:var(--surface-2);border:1px solid var(--color-divider)"></div><div style="height:clamp(38px,6vw,66px);border-radius:10px;background:var(--surface-2);border:1px solid var(--color-divider)"></div></div>
+              </div>
+            </div>
+
+            <div style="position:absolute;top:14px;left:14px;padding:5px 12px;border-radius:999px;background:rgba(10,13,18,.7);backdrop-filter:blur(6px);border:1px solid var(--border-blue);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-300);font-family:var(--font-heading);pointer-events:none">After</div>
+            <div style="position:absolute;top:14px;right:14px;padding:5px 12px;border-radius:999px;background:rgba(20,20,20,.55);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.14);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#e8e5de;font-family:var(--font-heading);pointer-events:none">Before</div>
+
+            <div data-slider-handle style="position:absolute;top:0;bottom:0;left:52%;width:2px;transform:translateX(-50%);background:linear-gradient(var(--color-accent),#fff,var(--color-accent));box-shadow:0 0 20px rgba(23,107,255,.7);pointer-events:none">
+              <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:42px;height:42px;border-radius:50%;background:rgba(10,13,18,.85);backdrop-filter:blur(6px);border:1px solid var(--color-accent);display:grid;place-items:center;box-shadow:0 8px 24px -6px rgba(23,107,255,.8)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#eaf1ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7l-4 5 4 5M15 7l4 5-4 5"/></svg></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="chat" style="max-width:var(--maxw);margin:0 auto;padding:clamp(46px,6vw,80px) var(--edge)">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(342px,1fr));gap:clamp(36px,5vw,72px);align-items:center">
+          <div data-reveal>
+            <div style="display:inline-flex;align-items:center;gap:13px;margin-bottom:24px">
+              <span style="width:34px;height:1px;background:var(--color-accent)"></span>
+              <span style="font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--color-accent-300)">AI &amp; Automation</span>
+            </div>
+            <h2 style="font-family:var(--font-heading);font-weight:500;font-size:clamp(30px,4.4vw,52px);letter-spacing:-0.02em;line-height:1.06;margin:0">
+              <span style="display:block">Your website can work</span>
+              <span style="display:block">even when <span style="color:var(--color-accent-300)">you're not.</span></span>
+            </h2>
+            <p style="margin:26px 0 0;max-width:44ch;font-size:15.5px;line-height:1.65;color:var(--text-2)">An AI assistant greets every visitor, answers common questions and turns interest into booked appointments — day or night, without adding to your workload.</p>
+            <div style="display:flex;flex-direction:column;gap:14px;margin-top:30px">
+              <div style="display:flex;align-items:center;gap:12px"><span style="display:grid;place-items:center;width:22px;height:22px;border-radius:6px;background:var(--color-accent-900);color:var(--color-accent-300);flex:none"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><span style="font-size:15px;color:var(--color-text)">24/7 customer assistance</span></div>
+              <div style="display:flex;align-items:center;gap:12px"><span style="display:grid;place-items:center;width:22px;height:22px;border-radius:6px;background:var(--color-accent-900);color:var(--color-accent-300);flex:none"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><span style="font-size:15px;color:var(--color-text)">Lead qualification</span></div>
+              <div style="display:flex;align-items:center;gap:12px"><span style="display:grid;place-items:center;width:22px;height:22px;border-radius:6px;background:var(--color-accent-900);color:var(--color-accent-300);flex:none"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><span style="font-size:15px;color:var(--color-text)">FAQ automation</span></div>
+              <div style="display:flex;align-items:center;gap:12px"><span style="display:grid;place-items:center;width:22px;height:22px;border-radius:6px;background:var(--color-accent-900);color:var(--color-accent-300);flex:none"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><span style="font-size:15px;color:var(--color-text)">Appointment support</span></div>
+              <div style="display:flex;align-items:center;gap:12px"><span style="display:grid;place-items:center;width:22px;height:22px;border-radius:6px;background:var(--color-accent-900);color:var(--color-accent-300);flex:none"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><span style="font-size:15px;color:var(--color-text)">Faster response time</span></div>
+            </div>
+          </div>
+
+          <div data-reveal="scale" data-widget="chat" style="border-radius:18px;background:linear-gradient(180deg,var(--color-surface),#0c1017);border:1px solid var(--color-divider);box-shadow:0 40px 90px -46px rgba(0,0,0,.95),0 0 60px -40px rgba(23,107,255,.4);overflow:hidden">
+            <div style="display:flex;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid var(--color-divider)">
+              <span style="display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:linear-gradient(160deg,rgba(23,107,255,.22),rgba(23,107,255,.05));border:1px solid var(--border-blue)"><svg width="18" height="18" viewBox="0 0 32 32" fill="none"><path d="M7 25 L16 7 L25 25" stroke="#7aa9ff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><path d="M11 19 L21 19" stroke="#7aa9ff" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+              <div style="line-height:1.3;flex:1"><div style="font-family:var(--font-heading);font-weight:600;font-size:14px">AUREQION Assistant</div><div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-3)"><span style="width:7px;height:7px;border-radius:50%;background:#30d178;animation:aqPulse 2.4s infinite"></span>Online now</div></div>
+            </div>
+            <div style="min-height:288px;display:flex;flex-direction:column;justify-content:flex-end;gap:12px;padding:20px 18px">
+              <div data-msg="user" style="align-self:flex-end;max-width:80%;padding:11px 15px;border-radius:14px 14px 4px 14px;background:color-mix(in srgb,var(--color-accent) 20%,var(--surface-2));border:1px solid var(--border-blue);font-size:13.5px;line-height:1.5;color:#eaf1ff">Do you offer same-day appointments?</div>
+              <div data-msg="bot" style="align-self:flex-start;max-width:82%;padding:11px 15px;border-radius:14px 14px 14px 4px;background:var(--surface-2);border:1px solid var(--color-divider);font-size:13.5px;line-height:1.5;color:var(--color-text)">Yes — I can help you check availability. What service are you looking for?</div>
+              <div data-msg="user" style="align-self:flex-end;max-width:80%;padding:11px 15px;border-radius:14px 14px 4px 14px;background:color-mix(in srgb,var(--color-accent) 20%,var(--surface-2));border:1px solid var(--border-blue);font-size:13.5px;line-height:1.5;color:#eaf1ff">AC repair.</div>
+              <div data-msg="bot" style="align-self:flex-start;max-width:82%;padding:11px 15px;border-radius:14px 14px 14px 4px;background:var(--surface-2);border:1px solid var(--color-divider);font-size:13.5px;line-height:1.5;color:var(--color-text)">Great — I can request an appointment for you right now. What's the best number to confirm it?</div>
+              <div data-typing style="align-self:flex-start;display:flex;gap:5px;padding:13px 16px;border-radius:14px;background:var(--surface-2);border:1px solid var(--color-divider)"><span style="width:6px;height:6px;border-radius:50%;background:var(--text-2);animation:aqDot 1.3s infinite"></span><span style="width:6px;height:6px;border-radius:50%;background:var(--text-2);animation:aqDot 1.3s infinite .18s"></span><span style="width:6px;height:6px;border-radius:50%;background:var(--text-2);animation:aqDot 1.3s infinite .36s"></span></div>
+              <div data-lead style="align-self:stretch;display:flex;align-items:center;gap:11px;padding:13px 16px;border-radius:12px;background:linear-gradient(90deg,rgba(48,209,120,.12),rgba(48,209,120,.04));border:1px solid rgba(48,209,120,.4);margin-top:4px">
+                <span style="display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:rgba(48,209,120,.2);color:#30d178;flex:none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+                <div style="line-height:1.3"><div style="font-family:var(--font-heading);font-weight:600;font-size:13.5px;color:#eafff3">Lead captured</div><div style="font-size:11.5px;color:var(--text-2)">New appointment request &mdash; sent to your inbox</div></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:14px 18px;border-top:1px solid var(--color-divider)">
+              <div style="flex:1;height:38px;border-radius:9px;background:var(--color-bg);border:1px solid var(--color-divider);display:flex;align-items:center;padding:0 13px;font-size:12.5px;color:var(--text-3)">Ask a question…</div>
+              <span style="display:grid;place-items:center;width:38px;height:38px;border-radius:9px;background:var(--color-accent);color:#fff;flex:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="process" style="max-width:var(--maxw);margin:0 auto;padding:clamp(46px,6vw,80px) var(--edge)">
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,0.8fr);gap:clamp(20px,4vw,60px);align-items:end;margin-bottom:clamp(44px,5vw,68px)">
+          <div data-reveal>
+            <div style="display:inline-flex;align-items:center;gap:13px;margin-bottom:24px">
+              <span style="width:34px;height:1px;background:var(--color-accent)"></span>
+              <span style="font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--color-accent-300)">Process</span>
+            </div>
+            <h2 style="font-family:var(--font-heading);font-weight:500;font-size:clamp(30px,4.4vw,52px);letter-spacing:-0.02em;line-height:1.06;margin:0">
+              <span style="display:block">From idea</span>
+              <span style="display:block">to <span style="color:var(--color-accent-300)">growth.</span></span>
+            </h2>
+          </div>
+          <p data-reveal data-delay="120" style="margin:0 0 4px;font-size:15px;line-height:1.65;color:var(--text-2)">A clear, proven path from first conversation to a website that keeps earning its place. No mystery, no disappearing act.</p>
+        </div>
+
+        <div data-reveal style="position:relative;padding-left:4px">
+          <div style="position:absolute;left:25px;top:22px;bottom:22px;width:2px;background:var(--color-divider)"></div>
+          <div data-progress style="position:absolute;left:25px;top:22px;bottom:22px;width:2px;background:linear-gradient(var(--color-accent),var(--color-accent-700));transform-origin:top;box-shadow:0 0 14px rgba(23,107,255,.5)"></div>
+          <div style="display:flex;flex-direction:column;gap:clamp(8px,1.4vw,18px)">
+            <div style="display:grid;grid-template-columns:44px 1fr;gap:clamp(20px,3vw,36px);align-items:start">
+              <span style="position:relative;z-index:1;width:44px;height:44px;border-radius:50%;background:var(--color-bg);border:1px solid var(--border-blue);display:grid;place-items:center;font-family:var(--font-heading);font-weight:600;color:var(--color-accent);font-size:14px">01</span>
+              <div data-reveal data-delay="60" style="padding:6px 0 clamp(14px,2vw,22px)"><h3 style="font-family:var(--font-heading);font-weight:500;font-size:clamp(18px,2vw,23px);letter-spacing:-0.01em;margin:0 0 8px">Discover</h3><p style="margin:0;font-size:14.5px;line-height:1.6;color:var(--text-2);max-width:52ch">We start by understanding your business, your customers, your competitors and what "growth" actually means for you.</p></div>
+            </div>
+            <div style="display:grid;grid-template-columns:44px 1fr;gap:clamp(20px,3vw,36px);align-items:start">
+              <span style="position:relative;z-index:1;width:44px;height:44px;border-radius:50%;background:var(--color-bg);border:1px solid var(--border-blue);display:grid;place-items:center;font-family:var(--font-heading);font-weight:600;color:var(--color-accent);font-size:14px">02</span>
+              <div data-reveal data-delay="60" style="padding:6px 0 clamp(14px,2vw,22px)"><h3 style="font-family:var(--font-heading);font-weight:500;font-size:clamp(18px,2vw,23px);letter-spacing:-0.01em;margin:0 0 8px">Strategize</h3><p style="margin:0;font-size:14.5px;line-height:1.6;color:var(--text-2);max-width:52ch">Together we map the website, SEO and automation strategy — a plan built around outcomes, not guesswork.</p></div>
+            </div>
+            <div style="display:grid;grid-template-columns:44px 1fr;gap:clamp(20px,3vw,36px);align-items:start">
+              <span style="position:relative;z-index:1;width:44px;height:44px;border-radius:50%;background:var(--color-bg);border:1px solid var(--border-blue);display:grid;place-items:center;font-family:var(--font-heading);font-weight:600;color:var(--color-accent);font-size:14px">03</span>
+              <div data-reveal data-delay="60" style="padding:6px 0 clamp(14px,2vw,22px)"><h3 style="font-family:var(--font-heading);font-weight:500;font-size:clamp(18px,2vw,23px);letter-spacing:-0.01em;margin:0 0 8px">Design</h3><p style="margin:0;font-size:14.5px;line-height:1.6;color:var(--text-2);max-width:52ch">A premium digital experience designed around your brand — the kind of first impression that builds trust instantly.</p></div>
+            </div>
+            <div style="display:grid;grid-template-columns:44px 1fr;gap:clamp(20px,3vw,36px);align-items:start">
+              <span style="position:relative;z-index:1;width:44px;height:44px;border-radius:50%;background:var(--color-bg);border:1px solid var(--border-blue);display:grid;place-items:center;font-family:var(--font-heading);font-weight:600;color:var(--color-accent);font-size:14px">04</span>
+              <div data-reveal data-delay="60" style="padding:6px 0 clamp(14px,2vw,22px)"><h3 style="font-family:var(--font-heading);font-weight:500;font-size:clamp(18px,2vw,23px);letter-spacing:-0.01em;margin:0 0 8px">Develop</h3><p style="margin:0;font-size:14.5px;line-height:1.6;color:var(--text-2);max-width:52ch">We build a fast, responsive and scalable website engineered to perform on every device and every connection.</p></div>
+            </div>
+            <div style="display:grid;grid-template-columns:44px 1fr;gap:clamp(20px,3vw,36px);align-items:start">
+              <span style="position:relative;z-index:1;width:44px;height:44px;border-radius:50%;background:var(--color-bg);border:1px solid var(--border-blue);display:grid;place-items:center;font-family:var(--font-heading);font-weight:600;color:var(--color-accent);font-size:14px">05</span>
+              <div data-reveal data-delay="60" style="padding:6px 0 clamp(14px,2vw,22px)"><h3 style="font-family:var(--font-heading);font-weight:500;font-size:clamp(18px,2vw,23px);letter-spacing:-0.01em;margin:0 0 8px">Optimize</h3><p style="margin:0;font-size:14.5px;line-height:1.6;color:var(--text-2);max-width:52ch">Launch is the starting line. We tune performance, SEO and conversions against real data from real visitors.</p></div>
+            </div>
+            <div style="display:grid;grid-template-columns:44px 1fr;gap:clamp(20px,3vw,36px);align-items:start">
+              <span style="position:relative;z-index:1;width:44px;height:44px;border-radius:50%;background:var(--color-accent);border:1px solid var(--color-accent);display:grid;place-items:center;font-family:var(--font-heading);font-weight:600;color:#fff;font-size:14px;box-shadow:0 0 20px rgba(23,107,255,.6)">06</span>
+              <div data-reveal data-delay="60" style="padding:6px 0 0"><h3 style="font-family:var(--font-heading);font-weight:500;font-size:clamp(18px,2vw,23px);letter-spacing:-0.01em;margin:0 0 8px">Grow</h3><p style="margin:0;font-size:14.5px;line-height:1.6;color:var(--text-2);max-width:52ch">We monitor, maintain and keep improving — so your digital presence compounds instead of standing still.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="why" style="max-width:var(--maxw);margin:0 auto;padding:clamp(46px,6vw,80px) var(--edge)">
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,0.82fr);gap:clamp(24px,4vw,60px);align-items:end;margin-bottom:clamp(44px,5vw,68px)">
+          <div data-reveal>
+            <div style="display:inline-flex;align-items:center;gap:13px;margin-bottom:24px">
+              <span style="width:34px;height:1px;background:var(--color-accent)"></span>
+              <span style="font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--color-accent-300)">Why Aureqion</span>
+            </div>
+            <h2 style="font-family:var(--font-heading);font-weight:500;font-size:clamp(30px,4.4vw,52px);letter-spacing:-0.02em;line-height:1.06;margin:0">
+              <span style="display:block">More than a website.</span>
+              <span style="display:block">A <span style="color:var(--color-accent-300)">digital growth partner.</span></span>
+            </h2>
+          </div>
+          <p data-reveal data-delay="120" style="margin:0 0 4px;font-size:15px;line-height:1.65;color:var(--text-2)">We don't disappear after your website launches. AUREQION keeps maintaining, optimizing and improving your digital presence as your business grows.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:clamp(14px,1.4vw,18px)">
+          <div data-card data-reveal style="display:flex;flex-direction:column;gap:13px;padding:26px 24px;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,.022),transparent);border:1px solid var(--color-divider)">
+            <span style="display:grid;place-items:center;width:42px;height:42px;border-radius:11px;background:var(--surface-2);border:1px solid var(--color-divider);color:var(--color-accent-300)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V13M10 20V8M16 20V4M20 20h-1M4 20h16"/></svg></span>
+            <div style="font-family:var(--font-heading);font-weight:500;font-size:16px;color:var(--color-text)">Built for business results</div>
+            <div style="font-size:13px;line-height:1.55;color:var(--text-3)">Every decision ties back to leads, calls and revenue — not vanity metrics.</div>
+          </div>
+<div data-card data-reveal data-delay="120" style="display:flex;flex-direction:column;gap:13px;padding:26px 24px;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,.022),transparent);border:1px solid var(--color-divider)">
+            <span style="display:grid;place-items:center;width:42px;height:42px;border-radius:11px;background:var(--surface-2);border:1px solid var(--color-divider);color:var(--color-accent-300)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 4V2M12 22v-2M4 12H2M22 12h-2M6 6L4.5 4.5M18 18l1.5 1.5M18 6l1.5-1.5M6 18l-1.5 1.5"/></svg></span>
+            <div style="font-family:var(--font-heading);font-weight:500;font-size:16px;color:var(--color-text)">AI-powered solutions</div>
+            <div style="font-size:13px;line-height:1.55;color:var(--text-3)">Automation and assistants that do real work quietly in the background.</div>
+          </div>
+          <div data-card data-reveal data-delay="180" style="display:flex;flex-direction:column;gap:13px;padding:26px 24px;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,.022),transparent);border:1px solid var(--color-divider)">
+            <span style="display:grid;place-items:center;width:42px;height:42px;border-radius:11px;background:var(--surface-2);border:1px solid var(--color-divider);color:var(--color-accent-300)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg></span>
+            <div style="font-family:var(--font-heading);font-weight:500;font-size:16px;color:var(--color-text)">SEO-ready architecture</div>
+            <div style="font-size:13px;line-height:1.55;color:var(--text-3)">Built to be found — from clean, crawlable code to local search.</div>
+          </div>
+<div data-card data-reveal data-delay="180" style="display:flex;flex-direction:column;gap:13px;padding:26px 24px;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,.022),transparent);border:1px solid var(--color-divider)">
+            <span style="display:grid;place-items:center;width:42px;height:42px;border-radius:11px;background:var(--surface-2);border:1px solid var(--color-divider);color:var(--color-accent-300)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/><path d="M14.5 9.5L18 6M9.5 14.5L6 18M14.5 14.5L18 18M9.5 9.5L6 6"/></svg></span>
+            <div style="font-family:var(--font-heading);font-weight:500;font-size:16px;color:var(--color-text)">Ongoing support</div>
+            <div style="font-size:13px;line-height:1.55;color:var(--text-3)">A partner that stays involved long after launch day.</div>
+          </div>
+        </div>
+      </section>
+      <section id="performance" style="max-width:var(--maxw);margin:0 auto;padding:clamp(46px,6vw,80px) var(--edge)">
+        <div data-reveal style="max-width:760px;margin-bottom:clamp(40px,5vw,60px)">
+          <div style="display:inline-flex;align-items:center;gap:13px;margin-bottom:24px">
+            <span style="width:34px;height:1px;background:var(--color-accent)"></span>
+            <span style="font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--color-accent-300)">Performance</span>
+          </div>
+          <h2 style="font-family:var(--font-heading);font-weight:500;font-size:clamp(30px,4.4vw,52px);letter-spacing:-0.02em;line-height:1.06;margin:0">
+            <span style="display:block">Performance isn't a feature.</span>
+            <span style="display:block">It's the <span style="color:var(--color-accent-300)">foundation.</span></span>
+          </h2>
+        </div>
+
+        <div data-reveal="scale" data-widget="gauges" style="border-radius:18px;background:radial-gradient(680px 340px at 82% -30%,rgba(23,107,255,.12),transparent 60%),linear-gradient(180deg,var(--color-surface),#0b0f16);border:1px solid var(--color-divider);box-shadow:0 40px 100px -54px rgba(0,0,0,.9);padding:clamp(26px,4vw,44px);overflow:hidden">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:clamp(26px,3vw,38px)">
+            <div style="display:flex;align-items:center;gap:10px"><span style="width:8px;height:8px;border-radius:50%;background:#30d178;animation:aqPulse 2.4s infinite"></span><span style="font-family:var(--font-heading);font-weight:600;font-size:14px;letter-spacing:.02em">Build standards</span></div>
+            <span style="font-size:11px;letter-spacing:.06em;color:var(--text-3);border:1px solid var(--color-divider);padding:4px 11px;border-radius:999px">Illustrative targets, not client results</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:clamp(20px,3vw,40px);justify-items:center">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:14px">
+              <div style="position:relative;width:128px;height:128px">
+                <svg width="128" height="128" viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="var(--color-divider)" stroke-width="8"/><circle data-gauge="0.98" cx="60" cy="60" r="50" fill="none" stroke="url(#gg1)" stroke-width="8" stroke-linecap="round" transform="rotate(-90 60 60)"/><defs><linearGradient id="gg1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7aa9ff"/><stop offset="1" stop-color="#176BFF"/></linearGradient></defs></svg>
+                <div style="position:absolute;inset:0;display:grid;place-items:center;font-family:var(--font-heading);font-weight:600;font-size:30px;color:var(--color-text)"><span data-count="98">98</span></div>
+              </div>
+              <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-2)">Performance</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:14px">
+              <div style="position:relative;width:128px;height:128px">
+                <svg width="128" height="128" viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="var(--color-divider)" stroke-width="8"/><circle data-gauge="1" cx="60" cy="60" r="50" fill="none" stroke="url(#gg2)" stroke-width="8" stroke-linecap="round" transform="rotate(-90 60 60)"/><defs><linearGradient id="gg2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7aa9ff"/><stop offset="1" stop-color="#176BFF"/></linearGradient></defs></svg>
+                <div style="position:absolute;inset:0;display:grid;place-items:center;font-family:var(--font-heading);font-weight:600;font-size:30px;color:var(--color-text)"><span data-count="100">100</span></div>
+              </div>
+              <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-2)">SEO ready</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:14px">
+              <div style="position:relative;width:128px;height:128px">
+                <svg width="128" height="128" viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="var(--color-divider)" stroke-width="8"/><circle data-gauge="0.96" cx="60" cy="60" r="50" fill="none" stroke="url(#gg3)" stroke-width="8" stroke-linecap="round" transform="rotate(-90 60 60)"/><defs><linearGradient id="gg3" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7aa9ff"/><stop offset="1" stop-color="#176BFF"/></linearGradient></defs></svg>
+                <div style="position:absolute;inset:0;display:grid;place-items:center;font-family:var(--font-heading);font-weight:600;font-size:30px;color:var(--color-text)"><span data-count="96">96</span></div>
+              </div>
+              <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-2)">Accessibility</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="industries" style="max-width:var(--maxw);margin:0 auto;padding:clamp(46px,6vw,80px) var(--edge)">
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,0.8fr);gap:clamp(24px,4vw,60px);align-items:end;margin-bottom:clamp(40px,5vw,60px)">
+          <div data-reveal>
+            <div style="display:inline-flex;align-items:center;gap:13px;margin-bottom:24px">
+              <span style="width:34px;height:1px;background:var(--color-accent)"></span>
+              <span style="font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--color-accent-300)">Industries</span>
+            </div>
+            <h2 style="font-family:var(--font-heading);font-weight:500;font-size:clamp(30px,4.4vw,52px);letter-spacing:-0.02em;line-height:1.06;margin:0">
+              <span style="display:block">Built for businesses</span>
+              <span style="display:block">ready to <span style="color:var(--color-accent-300)">grow.</span></span>
+            </h2>
+          </div>
+          <p data-reveal data-delay="120" style="margin:0 0 4px;font-size:15px;line-height:1.65;color:var(--text-2)">Different industries, same need: a digital presence that brings in customers. We tailor the approach to how your business actually wins work.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(184px,1fr));gap:clamp(12px,1.4vw,16px)">
+          <div data-card data-reveal style="display:flex;align-items:center;gap:14px;padding:20px 22px;border-radius:13px;border:1px solid var(--color-divider);background:linear-gradient(180deg,rgba(255,255,255,.02),transparent)"><span style="color:var(--color-accent-300);flex:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-6 8 6v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><path d="M10 21v-6h4v6"/></svg></span><span style="font-size:14.5px;color:var(--color-text)">Home Services</span></div>
+          <div data-card data-reveal data-delay="50" style="display:flex;align-items:center;gap:14px;padding:20px 22px;border-radius:13px;border:1px solid var(--color-divider);background:linear-gradient(180deg,rgba(255,255,255,.02),transparent)"><span style="color:var(--color-accent-300);flex:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/></svg></span><span style="font-size:14.5px;color:var(--color-text)">Professional Services</span></div>
+          <div data-card data-reveal data-delay="100" style="display:flex;align-items:center;gap:14px;padding:20px 22px;border-radius:13px;border:1px solid var(--color-divider);background:linear-gradient(180deg,rgba(255,255,255,.02),transparent)"><span style="color:var(--color-accent-300);flex:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V7l7-4 7 4v14"/><path d="M9 11h1M9 15h1M14 11h1M14 15h1M10 21v-4h4v4"/></svg></span><span style="font-size:14.5px;color:var(--color-text)">Real Estate</span></div>
+          <div data-card data-reveal data-delay="150" style="display:flex;align-items:center;gap:14px;padding:20px 22px;border-radius:13px;border:1px solid var(--color-divider);background:linear-gradient(180deg,rgba(255,255,255,.02),transparent)"><span style="color:var(--color-accent-300);flex:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 5.5-7 10-7 10z"/><path d="M8.5 11H11l1-2 1.5 3 1-1.5h2"/></svg></span><span style="font-size:14.5px;color:var(--color-text)">Healthcare</span></div>
+          <div data-card data-reveal data-delay="200" style="display:flex;align-items:center;gap:14px;padding:20px 22px;border-radius:13px;border:1px solid var(--color-divider);background:linear-gradient(180deg,rgba(255,255,255,.02),transparent)"><span style="color:var(--color-accent-300);flex:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v8M5 3v4a2 2 0 0 0 4 0V3M7 11v10M16 3c-1.5 1-2 4-2 6h4c0-2-.5-5-2-6zM16 11v10"/></svg></span><span style="font-size:14.5px;color:var(--color-text)">Restaurants</span></div>
+          <div data-card data-reveal style="display:flex;align-items:center;gap:14px;padding:20px 22px;border-radius:13px;border:1px solid var(--color-divider);background:linear-gradient(180deg,rgba(255,255,255,.02),transparent)"><span style="color:var(--color-accent-300);flex:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M6 21h12M6 7l-3 5h6zM18 7l3 5h-6zM12 5l-6 2M12 5l6 2"/></svg></span><span style="font-size:14.5px;color:var(--color-text)">Law Firms</span></div>
+<div data-card data-reveal data-delay="150" style="display:flex;align-items:center;gap:14px;padding:20px 22px;border-radius:13px;border:1px solid var(--color-divider);background:linear-gradient(180deg,rgba(255,255,255,.02),transparent)"><span style="color:var(--color-accent-300);flex:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6-5-6-10a6 6 0 0 1 12 0c0 5-6 10-6 10z"/><circle cx="12" cy="11" r="2"/></svg></span><span style="font-size:14.5px;color:var(--color-text)">Local Businesses</span></div>
+          <div data-card data-reveal data-delay="200" style="display:flex;align-items:center;gap:14px;padding:20px 22px;border-radius:13px;border:1px solid var(--color-divider);background:linear-gradient(180deg,rgba(255,255,255,.02),transparent)"><span style="color:var(--color-accent-300);flex:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M3 4h2.2l2 11h10l2-7.5H6.5"/></svg></span><span style="font-size:14.5px;color:var(--color-text)">E-commerce</span></div>
+        </div>
+      </section>
+      <section id="audit" style="position:relative;max-width:var(--maxw);margin:0 auto;padding:clamp(46px,6vw,80px) var(--edge)">
+        <div data-audit-cols style="display:grid;grid-template-columns:minmax(0,0.92fr) minmax(0,1.08fr);gap:clamp(36px,5vw,72px);align-items:start">
+          <div data-reveal>
+            <div style="display:inline-flex;align-items:center;gap:13px;margin-bottom:24px">
+              <span style="width:34px;height:1px;background:var(--color-accent)"></span>
+              <span style="font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--color-accent-300)">Free website audit</span>
+            </div>
+            <h2 style="font-family:var(--font-heading);font-weight:500;font-size:clamp(30px,4.4vw,52px);letter-spacing:-0.02em;line-height:1.06;margin:0">Not sure what your website needs?</h2>
+            <p style="margin:24px 0 0;max-width:46ch;font-size:16px;line-height:1.65;color:var(--text-2)">We'll review your current website and identify the opportunities that matter most — design, performance, SEO and conversions. You'll get a clear, honest picture of what's working and what isn't.</p>
+            <div style="display:flex;flex-direction:column;gap:14px;margin-top:30px">
+              <div style="display:flex;align-items:center;gap:12px"><span style="display:grid;place-items:center;width:22px;height:22px;border-radius:6px;background:var(--color-accent-900);color:var(--color-accent-300);flex:none"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><span style="font-size:15px;color:var(--color-text)">No obligation</span></div>
+              <div style="display:flex;align-items:center;gap:12px"><span style="display:grid;place-items:center;width:22px;height:22px;border-radius:6px;background:var(--color-accent-900);color:var(--color-accent-300);flex:none"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><span style="font-size:15px;color:var(--color-text)">No aggressive sales pitch</span></div>
+            </div>
+            <div style="height:1px;background:linear-gradient(to right,var(--color-divider),transparent);margin:30px 0"></div>
+            <p style="margin:0 0 14px;font-size:13px;letter-spacing:.02em;color:var(--text-3)">Prefer to talk it through?</p>
+            <a class="aq-link" href="tel:9802770172" style="display:inline-flex;align-items:center;gap:10px;font-family:var(--font-heading);font-weight:500;font-size:clamp(19px,2.4vw,26px);color:var(--color-text)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>9802770172</a>
+            <a class="aq-link" href="mailto:stephen@aureqion.com" style="display:inline-flex;align-items:center;gap:10px;margin-top:14px;font-size:19px;color:var(--text-2);word-break:break-all"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5L12 13l8.5-6.5"/></svg>stephen@aureqion.com</a>
+          </div>
+
+          <form data-widget="form" data-reveal="scale" style="position:relative;border-radius:18px;background:linear-gradient(180deg,var(--color-surface),#0c1017);border:1px solid var(--color-divider);box-shadow:0 40px 100px -50px rgba(0,0,0,.9),0 0 70px -46px rgba(23,107,255,.5);padding:clamp(26px,3.4vw,40px)">
+            <div style="position:absolute;top:0;left:24px;right:24px;height:1px;background:linear-gradient(to right,transparent,var(--border-blue),transparent)"></div>
+            <div data-form-fields>
+              <h3 style="font-family:var(--font-heading);font-weight:600;font-size:18px;margin:0 0 22px">Get my free website audit</h3>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+                <div class="field"><label for="aq-name">Name</label><input class="input" id="aq-name" name="name" required autocomplete="name" placeholder="Your name" style="background:var(--color-bg)"/></div>
+                <div class="field"><label for="aq-biz">Business name</label><input class="input" id="aq-biz" name="business" autocomplete="organization" placeholder="Your business" style="background:var(--color-bg)"/></div>
+              </div>
+              <div class="field" style="margin-top:16px"><label for="aq-url">Website URL</label><input class="input" id="aq-url" name="website" type="url" inputmode="url" placeholder="https://yourwebsite.com" style="background:var(--color-bg)"/></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px">
+                <div class="field"><label for="aq-email">Email</label><input class="input" id="aq-email" name="email" type="email" required autocomplete="email" placeholder="you@business.com" style="background:var(--color-bg)"/></div>
+                <div class="field"><label for="aq-phone">Phone</label><input class="input" id="aq-phone" name="phone" type="tel" autocomplete="tel" placeholder="(555) 000-0000" style="background:var(--color-bg)"/></div>
+              </div>
+              <div class="field" style="margin-top:22px">
+                <label style="margin-bottom:12px">What would you like help with?</label>
+                <div style="display:flex;flex-wrap:wrap;gap:9px">
+                  <label data-pill style="display:inline-flex;align-items:center;gap:7px;padding:9px 15px;border-radius:999px;border:1px solid var(--color-divider);font-size:13px;color:var(--text-2);background:var(--surface-2)"><input type="checkbox" name="help" value="New Website"/>New Website</label>
+                  <label data-pill style="display:inline-flex;align-items:center;gap:7px;padding:9px 15px;border-radius:999px;border:1px solid var(--color-divider);font-size:13px;color:var(--text-2);background:var(--surface-2)"><input type="checkbox" name="help" value="Website Redesign"/>Website Redesign</label>
+                  <label data-pill style="display:inline-flex;align-items:center;gap:7px;padding:9px 15px;border-radius:999px;border:1px solid var(--color-divider);font-size:13px;color:var(--text-2);background:var(--surface-2)"><input type="checkbox" name="help" value="SEO"/>SEO</label>
+                  <label data-pill style="display:inline-flex;align-items:center;gap:7px;padding:9px 15px;border-radius:999px;border:1px solid var(--color-divider);font-size:13px;color:var(--text-2);background:var(--surface-2)"><input type="checkbox" name="help" value="AI Chatbot"/>AI Chatbot</label>
+                  <label data-pill style="display:inline-flex;align-items:center;gap:7px;padding:9px 15px;border-radius:999px;border:1px solid var(--color-divider);font-size:13px;color:var(--text-2);background:var(--surface-2)"><input type="checkbox" name="help" value="Automation"/>Automation</label>
+                  <label data-pill style="display:inline-flex;align-items:center;gap:7px;padding:9px 15px;border-radius:999px;border:1px solid var(--color-divider);font-size:13px;color:var(--text-2);background:var(--surface-2)"><input type="checkbox" name="help" value="Website Maintenance"/>Website Maintenance</label>
+                  <label data-pill style="display:inline-flex;align-items:center;gap:7px;padding:9px 15px;border-radius:999px;border:1px solid var(--color-divider);font-size:13px;color:var(--text-2);background:var(--surface-2)"><input type="checkbox" name="help" value="Not Sure"/>Not sure</label>
+                </div>
+              </div>
+              <button type="submit" data-cta class="btn btn-primary" style="width:100%;margin-top:26px;padding:15px;font-size:15px;color:#eef4ff;background:color-mix(in srgb,var(--color-accent) 18%,transparent);box-shadow:0 16px 40px -16px rgba(23,107,255,.7);transition:transform .3s,background .3s,box-shadow .3s" style-hover="transform:translateY(-2px);background:color-mix(in srgb,var(--color-accent) 28%,transparent);box-shadow:0 22px 50px -16px rgba(23,107,255,.85)">Analyze my website <span class="arrow" style="font-size:16px">→</span></button>
+              <p data-form-error role="alert" style="display:none;margin:14px 0 0;padding:11px 14px;border-radius:10px;border:1px solid rgba(255,107,107,.45);background:rgba(255,107,107,.10);text-align:center;font-size:13px;line-height:1.5;color:#ff9b9b"></p>
+              <p style="margin:16px 0 0;text-align:center;font-size:12px;color:var(--text-3)">We reply within one business day. Your details stay private.</p>
+            </div>
+            <div data-form-success style="display:none;flex-direction:column;align-items:center;text-align:center;gap:16px;padding:44px 16px;opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease">
+              <span style="display:grid;place-items:center;width:60px;height:60px;border-radius:50%;background:rgba(48,209,120,.14);border:1px solid rgba(48,209,120,.45);color:#30d178"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+              <h3 style="font-family:var(--font-heading);font-weight:600;font-size:22px;margin:0">Your request is in.</h3>
+              <p style="margin:0;max-width:34ch;font-size:14.5px;line-height:1.6;color:var(--text-2)">Thanks — we'll review your website and get back to you within one business day with a clear set of next steps.</p>
+            </div>
+          </form>
+        </div>
+      </section>
+      <section id="start" style="position:relative;padding:clamp(68px,9vw,130px) var(--edge);overflow:hidden;text-align:center">
+        <div aria-hidden="true" style="position:absolute;top:52%;left:50%;width:min(900px,90vw);height:min(900px,90vw);border-radius:50%;background:radial-gradient(circle,rgba(23,107,255,.22),rgba(23,107,255,.06) 42%,transparent 66%);transform:translate(-50%,-50%);animation:aqGlowPulse 9s ease-in-out infinite;pointer-events:none"></div>
+        <div aria-hidden="true" style="position:absolute;top:52%;left:50%;width:min(1300px,120vw);height:340px;transform:translate(-50%,-50%);background:radial-gradient(60% 100% at 50% 50%,rgba(23,107,255,.1),transparent 70%);pointer-events:none"></div>
+        <div style="position:relative;z-index:1;max-width:940px;margin:0 auto">
+          <h2 data-reveal style="font-family:var(--font-heading);font-weight:600;font-size:clamp(34px,6vw,74px);letter-spacing:-0.03em;line-height:1.02;margin:0;color:var(--text-2)">
+            <span style="display:block">Your business deserves</span>
+            <span style="display:block;color:var(--color-text)">more than just a website.</span>
+          </h2>
+          <p data-reveal data-delay="120" style="margin:clamp(20px,3vw,32px) 0 0;font-family:var(--font-heading);font-weight:500;font-size:clamp(20px,2.6vw,32px);letter-spacing:-0.01em;color:var(--text-2)">Let's build something that <span style="background:linear-gradient(120deg,#5f96ff,#176BFF);-webkit-background-clip:text;background-clip:text;color:transparent">helps it grow.</span></p>
+          <div data-reveal data-delay="240" style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-top:clamp(34px,4vw,48px)">
+            <a data-cta href="#audit" class="btn btn-primary" style="padding:16px 28px;font-size:15.5px;color:#eef4ff;background:color-mix(in srgb,var(--color-accent) 18%,transparent);box-shadow:0 18px 46px -16px rgba(23,107,255,.75);transition:transform .3s,background .3s,box-shadow .3s" style-hover="transform:translateY(-2px);background:color-mix(in srgb,var(--color-accent) 28%,transparent);box-shadow:0 24px 56px -16px rgba(23,107,255,.9)">Start your project <span class="arrow" style="font-size:17px">→</span></a>
+            <a href="tel:9802770172" class="btn btn-secondary" style="padding:16px 26px;font-size:15.5px;color:var(--color-text);border-color:var(--color-divider);transition:transform .3s,border-color .3s,background .3s" style-hover="transform:translateY(-2px);border-color:var(--border-blue);background:rgba(255,255,255,.03)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-300)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin-right:2px"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>Call 9802770172</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer style="border-top:1px solid var(--color-divider);padding:clamp(56px,7vw,90px) var(--edge) 40px;margin-top:clamp(20px,4vw,40px)">
+      <div style="max-width:var(--maxw);margin:0 auto">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:clamp(32px,4vw,56px)">
+          <div style="max-width:340px">
+            <a href="#top" style="display:flex;align-items:center;gap:13px;text-decoration:none;color:var(--color-text);margin-bottom:18px">
+              <span style="display:grid;place-items:center;width:38px;height:38px;border-radius:10px;background:linear-gradient(160deg,rgba(23,107,255,.16),rgba(23,107,255,.03));border:1px solid var(--border-blue)"><svg width="20" height="20" viewBox="0 0 32 32" fill="none"><path d="M6 27 L16 5 L26 27" stroke="url(#lgf)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/><path d="M10.6 19.2 L21.4 19.2" stroke="url(#lgf)" stroke-width="2.5" stroke-linecap="round"/><defs><linearGradient id="lgf" x1="16" y1="5" x2="16" y2="27" gradientUnits="userSpaceOnUse"><stop stop-color="#7aa9ff"/><stop offset="1" stop-color="#176BFF"/></linearGradient></defs></svg></span>
+              <span style="display:flex;flex-direction:column;line-height:1"><span style="font-family:var(--font-heading);font-weight:600;font-size:18px;letter-spacing:.15em">AURE<span style="color:var(--color-accent)">Q</span>ION</span><span style="font-size:9px;letter-spacing:.34em;color:var(--text-3);margin-top:5px">DIGITAL GROWTH &amp; AI</span></span>
+            </a>
+            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--text-3);max-width:34ch">Websites, AI and digital solutions built to help businesses compete and grow.</p>
+          </div>
+          <div>
+            <h4 style="font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin:0 0 18px">Services</h4>
+            <div style="display:flex;flex-direction:column;gap:11px">
+              <a class="aq-link" href="#services" style="font-size:14px;color:var(--text-2)">Website Development</a>
+              <a class="aq-link" href="#chat" style="font-size:14px;color:var(--text-2)">AI Chatbots</a>
+              <a class="aq-link" href="#services" style="font-size:14px;color:var(--text-2)">SEO</a>
+              <a class="aq-link" href="#work" style="font-size:14px;color:var(--text-2)">Website Redesign</a>
+              <a class="aq-link" href="#why" style="font-size:14px;color:var(--text-2)">Website Care</a>
+            </div>
+          </div>
+          <div>
+            <h4 style="font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin:0 0 18px">Company</h4>
+            <div style="display:flex;flex-direction:column;gap:11px">
+              <a class="aq-link" href="#process" style="font-size:14px;color:var(--text-2)">Process</a>
+              <a class="aq-link" href="#industries" style="font-size:14px;color:var(--text-2)">Industries</a>
+              <a class="aq-link" href="#audit" style="font-size:14px;color:var(--text-2)">Free Audit</a>
+              <a class="aq-link" href="#audit" style="font-size:14px;color:var(--text-2)">Contact</a>
+            </div>
+          </div>
+          <div>
+            <h4 style="font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin:0 0 18px">Contact</h4>
+            <div style="display:flex;flex-direction:column;gap:11px">
+              <a class="aq-link" href="tel:9802770172" style="font-size:14px;color:var(--text-2)">9802770172</a>
+              <a class="aq-link" href="mailto:stephen@aureqion.com" style="font-size:14px;color:var(--text-2);word-break:break-all">stephen@aureqion.com</a>
+            </div>
+          </div>
+        </div>
+        <div style="height:1px;background:linear-gradient(to right,transparent,var(--color-divider) 48px,var(--color-divider) calc(100% - 48px),transparent);margin:clamp(40px,5vw,60px) 0 24px"></div>
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:12.5px;color:var(--text-3)">
+          <span>© AUREQION. All rights reserved.</span>
+          <span>Serving businesses across the USA</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;formEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;stephen@aureqion.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contact&quot;}}">
+class Component extends DCLogic {
+  setRoot = (el) => { this.root = el; };
+
+  componentDidMount() {
+    const mq = (q) => { try { return matchMedia(q).matches; } catch (e) { return false; } };
+    this.reduce = mq('(prefers-reduced-motion: reduce)');
+    this.coarse = mq('(pointer: coarse)');
+    this.small = mq('(max-width: 900px)');
+    this._timers = [];
+    this.formTo = this.props.formEmail || 'stephen@aureqion.com';
+    this.scan();
+    this.mo = new MutationObserver(() => { cancelAnimationFrame(this._sraf); this._sraf = requestAnimationFrame(() => this.scan()); });
+    if (this.root) this.mo.observe(this.root, { childList: true, subtree: true });
+    this.initCursor();
+    this.initScroll();
+    [120, 450, 1100].forEach((t) => this._timers.push(setTimeout(() => this.checkReveals(), t)));
+    this._onLoad = () => this.checkReveals();
+    addEventListener('load', this._onLoad);
+  }
+
+  componentWillUnmount() {
+    cancelAnimationFrame(this.bgRaf); cancelAnimationFrame(this.curRaf); cancelAnimationFrame(this._sraf);
+    if (this._onScroll) removeEventListener('scroll', this._onScroll);
+    if (this._onPointer) removeEventListener('pointermove', this._onPointer);
+    if (this._onResize) removeEventListener('resize', this._onResize);
+    if (this._onLoad) removeEventListener('load', this._onLoad);
+    this.mo && this.mo.disconnect();
+    (this._timers || []).forEach(clearTimeout);
+  }
+
+  root_() { return this.root || document; }
+
+  scan() {
+    const root = this.root_();
+    const cv = root.querySelector('#aq-bg');
+    if (cv && !this._bgInit) { this._bgInit = true; try { this.initBackground(cv); } catch (e) {} }
+    root.querySelectorAll('[data-reveal]').forEach((el) => {
+      if (el._aqDone || el._aqHid) return;
+      el._aqHid = 1;
+      if (this.reduce) { this.reveal(el); return; }
+      const d = el.getAttribute('data-reveal');
+      el.style.opacity = '0';
+      el.style.willChange = 'opacity, transform';
+      el.style.transform = d === 'left' ? 'translateX(-26px)' : d === 'right' ? 'translateX(26px)' : d === 'scale' ? 'perspective(1600px) scale(.955)' : 'translateY(30px)';
+      el.style.transition = 'opacity .85s cubic-bezier(.22,.61,.36,1), transform .85s cubic-bezier(.22,.61,.36,1)';
+      const dl = el.getAttribute('data-delay'); if (dl) el.style.transitionDelay = dl + 'ms';
+    });
+    root.querySelectorAll('[data-widget="slider"]').forEach((el) => { if (el._aqS) return; el._aqS = 1; try { this.initSlider(el); } catch (e) {} });
+    root.querySelectorAll('[data-widget="form"]').forEach((el) => {
+      if (el._aqF) return; el._aqF = 1;
+      const success = el.querySelector('[data-form-success]');
+      const fields = el.querySelector('[data-form-fields]');
+      const btn = el.querySelector('button[type="submit"]');
+      const error = el.querySelector('[data-form-error]');
+      const btnHtml = btn ? btn.innerHTML : '';
+      const done = () => {
+        if (fields) fields.style.display = 'none';
+        if (success) { success.style.display = 'flex'; requestAnimationFrame(() => { success.style.opacity = '1'; success.style.transform = 'none'; }); }
+      };
+      const fail = (msg) => {
+        // never silently claim success — the sender must be able to retry
+        if (error) { error.textContent = msg; error.style.display = 'block'; }
+        if (btn) { btn.disabled = false; btn.style.opacity = ''; btn.innerHTML = btnHtml; }
+      };
+      el.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (el.checkValidity && !el.checkValidity()) { el.reportValidity && el.reportValidity(); return; }
+        if (error) error.style.display = 'none';
+        const fd = new FormData(el);
+        const help = fd.getAll('help');
+        const payload = {
+          _subject: 'New website audit request — ' + (fd.get('name') || 'Website'),
+          _template: 'table',
+          name: fd.get('name') || '',
+          business: fd.get('business') || '',
+          website: fd.get('website') || '',
+          email: fd.get('email') || '',
+          phone: fd.get('phone') || '',
+          'help with': help.length ? help.join(', ') : 'Not specified'
+        };
+        if (btn) { btn.disabled = true; btn.style.opacity = '.65'; btn.innerHTML = 'Sending…'; }
+        fetch('https://formsubmit.co/ajax/' + this.formTo, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(payload)
+        }).then((r) => r.json().catch(() => ({})).then((body) => {
+          // fetch resolves on 4xx/5xx too, so the status must be checked;
+          // FormSubmit answers 200 {"success":"true"} and reports refusals
+          // (unactivated recipient, rate limit) in the body
+          if (r.ok && String(body.success) !== 'false') { done(); return; }
+          fail(body.message || 'We could not send that just now. Please email stephen@aureqion.com or call 9802770172.');
+        })).catch(() => fail('Network error — check your connection and try again, or email stephen@aureqion.com.'));
+      });
+    });
+    root.querySelectorAll('[data-card]').forEach((el) => {
+      if (el._aqC || this.coarse) return; el._aqC = 1;
+      el.addEventListener('pointermove', (ev) => {
+        const r = el.getBoundingClientRect();
+        el.style.setProperty('--mx', (ev.clientX - r.left) + 'px');
+        el.style.setProperty('--my', (ev.clientY - r.top) + 'px');
+      }, { passive: true });
+    });
+    requestAnimationFrame(() => requestAnimationFrame(() => this.checkReveals()));
+  }
+
+  checkReveals() {
+    const root = this.root_();
+    const vh = innerHeight || 800;
+    root.querySelectorAll('[data-reveal]').forEach((el) => {
+      if (el._aqDone) return;
+      if (this.reduce) { this.reveal(el); return; }
+      const r = el.getBoundingClientRect();
+      if (r.top < vh * 0.9 && r.bottom > -100) this.reveal(el);
+    });
+  }
+
+  reveal(el) {
+    if (el._aqDone) return; el._aqDone = 1;
+    el.style.opacity = '1'; el.style.transform = 'none';
+    this._timers.push(setTimeout(() => { el.style.willChange = 'auto'; }, 1300));
+    el.querySelectorAll('[data-count]').forEach((n) => this.count(n));
+    const g = el.matches('[data-widget="gauges"]') ? el : el.querySelector('[data-widget="gauges"]');
+    if (g && !g._played) { g._played = 1; g.querySelectorAll('[data-gauge]').forEach((x) => this.gauge(x)); }
+    const c = el.matches('[data-widget="chat"]') ? el : el.querySelector('[data-widget="chat"]');
+    if (c && !c._played) { c._played = 1; this.playChat(c); }
+    const pl = el.matches('[data-progress]') ? el : el.querySelector('[data-progress]');
+    if (pl && !pl._played) { pl._played = 1; this.growLine(pl); }
+  }
+
+  count(n) {
+    if (n._done) return; n._done = 1;
+    const raw = n.getAttribute('data-count'); const to = parseFloat(raw);
+    const dec = raw.indexOf('.') >= 0 ? 1 : 0;
+    const pre = n.getAttribute('data-prefix') || ''; const suf = n.getAttribute('data-suffix') || '';
+    if (this.reduce || isNaN(to)) { n.textContent = pre + (isNaN(to) ? raw : to.toFixed(dec)) + suf; return; }
+    const dur = 1500, t0 = performance.now();
+    const step = (t) => { const p = Math.min(1, (t - t0) / dur); const e = 1 - Math.pow(1 - p, 3); n.textContent = pre + (to * e).toFixed(dec) + suf; if (p < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  }
+
+  gauge(g) {
+    const val = parseFloat(g.getAttribute('data-gauge')) || 0;
+    const r = parseFloat(g.getAttribute('r')) || 42; const c = 2 * Math.PI * r;
+    g.style.strokeDasharray = c; g.style.strokeDashoffset = c;
+    requestAnimationFrame(() => {
+      g.style.transition = this.reduce ? 'none' : 'stroke-dashoffset 1.6s cubic-bezier(.22,.61,.36,1)';
+      requestAnimationFrame(() => { g.style.strokeDashoffset = c * (1 - val); });
+    });
+  }
+
+  growLine(el) {
+    if (this.reduce) { el.style.transform = 'scaleY(1)'; return; }
+    el.style.transformOrigin = 'top'; el.style.transform = 'scaleY(0)';
+    el.style.transition = 'transform 1.8s cubic-bezier(.4,0,.2,1)';
+    requestAnimationFrame(() => requestAnimationFrame(() => { el.style.transform = 'scaleY(1)'; }));
+  }
+
+  playChat(chat) {
+    const rows = [...chat.querySelectorAll('[data-msg]')];
+    const typing = chat.querySelector('[data-typing]');
+    const lead = chat.querySelector('[data-lead]');
+    const showRow = (el) => { el.style.display = ''; requestAnimationFrame(() => { el.style.opacity = '1'; el.style.transform = 'none'; }); };
+    if (this.reduce) { if (typing) typing.style.display = 'none'; return; }
+    rows.forEach((r) => { r.style.display = 'none'; r.style.opacity = '0'; r.style.transform = 'translateY(10px)'; r.style.transition = 'opacity .45s ease, transform .45s ease'; });
+    if (lead) { lead.style.display = 'none'; lead.style.opacity = '0'; lead.style.transform = 'translateY(10px) scale(.97)'; lead.style.transition = 'opacity .5s ease, transform .5s ease'; }
+    if (typing) { typing.style.display = 'none'; typing.style.opacity = '0'; typing.style.transition = 'opacity .3s ease'; }
+    let d = 500; const gap = 780; const tShow = 1000;
+    rows.forEach((r) => {
+      if (r.getAttribute('data-msg') === 'bot' && typing) {
+        this._timers.push(setTimeout(() => { typing.style.display = ''; requestAnimationFrame(() => { typing.style.opacity = '1'; }); }, d)); d += tShow;
+        this._timers.push(setTimeout(() => { typing.style.opacity = '0'; this._timers.push(setTimeout(() => { typing.style.display = 'none'; }, 260)); }, d)); d += 300;
+      }
+      this._timers.push(setTimeout(() => showRow(r), d)); d += gap;
+    });
+    if (lead) { d += 220; this._timers.push(setTimeout(() => showRow(lead), d)); }
+  }
+
+  initSlider(el) {
+    const after = el.querySelector('[data-slider-after]'); const handle = el.querySelector('[data-slider-handle]');
+    if (!after || !handle) return;
+    let pos = 52;
+    const set = (p) => { pos = Math.max(2, Math.min(98, p)); after.style.clipPath = 'inset(0 ' + (100 - pos) + '% 0 0)'; handle.style.left = pos + '%'; el.setAttribute('aria-valuenow', Math.round(pos)); };
+    const fromEvent = (e) => { const r = el.getBoundingClientRect(); const cx = e.touches ? e.touches[0].clientX : e.clientX; set(((cx - r.left) / r.width) * 100); };
+    let drag = false;
+    el.addEventListener('pointerdown', (e) => { drag = true; try { el.setPointerCapture(e.pointerId); } catch (x) {} fromEvent(e); });
+    el.addEventListener('pointermove', (e) => { if (drag) fromEvent(e); });
+    addEventListener('pointerup', () => { drag = false; });
+    handle.addEventListener('keydown', (e) => { if (e.key === 'ArrowLeft') { set(pos - 4); e.preventDefault(); } if (e.key === 'ArrowRight') { set(pos + 4); e.preventDefault(); } });
+    set(52);
+  }
+
+  initCursor() {
+    const g = this.root_().querySelector('#aq-cursor');
+    if (!g) return;
+    if (this.coarse || this.small || this.reduce) { g.style.display = 'none'; return; }
+    let tx = innerWidth / 2, ty = innerHeight / 2, x = tx, y = ty;
+    this._onPointer = (e) => { tx = e.clientX; ty = e.clientY; };
+    addEventListener('pointermove', this._onPointer, { passive: true });
+    const loop = () => { x += (tx - x) * 0.055; y += (ty - y) * 0.055; g.style.transform = 'translate(' + (x - 310) + 'px,' + (y - 310) + 'px)'; this.curRaf = requestAnimationFrame(loop); };
+    loop();
+  }
+
+  initScroll() {
+    const root = this.root_();
+    const nav = root.querySelector('[data-nav]');
+    const layers = [...root.querySelectorAll('[data-par]')];
+    let ticking = false;
+    this._onScroll = () => {
+      if (ticking) return; ticking = true;
+      requestAnimationFrame(() => {
+        const y = scrollY || pageYOffset;
+        if (nav) {
+          if (y > 20) {
+            nav.style.background = 'rgba(10,13,18,0.72)';
+            nav.style.backdropFilter = 'blur(18px) saturate(150%)';
+            nav.style.webkitBackdropFilter = 'blur(18px) saturate(150%)';
+            nav.style.borderColor = 'var(--color-divider)';
+            nav.style.boxShadow = '0 14px 44px -24px rgba(0,0,0,.9)';
+            nav.style.paddingTop = '11px'; nav.style.paddingBottom = '11px';
+          } else {
+            nav.style.background = 'transparent'; nav.style.backdropFilter = 'none'; nav.style.webkitBackdropFilter = 'none';
+            nav.style.borderColor = 'transparent'; nav.style.boxShadow = 'none';
+            nav.style.paddingTop = '18px'; nav.style.paddingBottom = '18px';
+          }
+        }
+        if (!this.reduce) for (const l of layers) { const f = parseFloat(l.getAttribute('data-par')) || 0; l.style.transform = 'translate3d(0,' + (y * f).toFixed(1) + 'px,0)'; }
+        this.checkReveals();
+        ticking = false;
+      });
+    };
+    addEventListener('scroll', this._onScroll, { passive: true }); this._onScroll();
+  }
+
+  initBackground(cv) {
+    const ctx = cv.getContext('2d'); if (!ctx) return;
+    let w = 0, h = 0, dpr = 1, parts = [];
+    const N = this.small ? 26 : 66; const connect = !this.small;
+    const resize = () => { dpr = Math.min(devicePixelRatio || 1, 2); w = cv.clientWidth; h = cv.clientHeight; cv.width = Math.max(1, w * dpr); cv.height = Math.max(1, h * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
+    const mk = () => ({ x: Math.random() * (w || innerWidth), y: Math.random() * (h || innerHeight), z: Math.random(), vx: (Math.random() - .5) * 0.05, vy: (Math.random() - .5) * 0.05, tw: Math.random() * Math.PI * 2 });
+    resize(); parts = Array.from({ length: N }, mk);
+    this._onResize = () => { resize(); }; addEventListener('resize', this._onResize, { passive: true });
+    const draw = (t) => {
+      ctx.clearRect(0, 0, w, h);
+      if (connect) {
+        const R = 138;
+        for (let i = 0; i < parts.length; i++) for (let j = i + 1; j < parts.length; j++) {
+          const a = parts[i], b = parts[j], dx = a.x - b.x, dy = a.y - b.y, d = Math.hypot(dx, dy);
+          if (d < R) { const o = (1 - d / R) * 0.14 * Math.min(a.z, b.z) + 0.015; ctx.strokeStyle = 'rgba(23,107,255,' + o.toFixed(3) + ')'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); }
+        }
+      }
+      for (const p of parts) { const tw = 0.55 + 0.45 * Math.sin(t * 0.0006 + p.tw); const rad = 0.6 + p.z * 1.5; const a = (0.12 + p.z * 0.4) * tw; ctx.beginPath(); ctx.arc(p.x, p.y, rad, 0, 7); ctx.fillStyle = p.z > 0.78 ? 'rgba(210,226,255,' + (a * 0.9).toFixed(3) + ')' : 'rgba(23,107,255,' + a.toFixed(3) + ')'; ctx.fill(); }
+    };
+    if (this.reduce) { draw(0); return; }
+    const loop = (t) => {
+      for (const p of parts) { p.x += p.vx * (0.4 + p.z); p.y += p.vy * (0.4 + p.z); if (p.x < -12) p.x = w + 12; if (p.x > w + 12) p.x = -12; if (p.y < -12) p.y = h + 12; if (p.y > h + 12) p.y = -12; }
+      draw(t); this.bgRaf = requestAnimationFrame(loop);
+    };
+    document.addEventListener('visibilitychange', () => { if (document.hidden) cancelAnimationFrame(this.bgRaf); else this.bgRaf = requestAnimationFrame(loop); });
+    this.bgRaf = requestAnimationFrame(loop);
+  }
+}
+</script>
+</body>
+</html>

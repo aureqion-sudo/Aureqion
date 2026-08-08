@@ -1,0 +1,11 @@
+{
+  "name": "nocturne-landing",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Static landing page (Nocturne design system). Served as-is — no build step.",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  }
+}
