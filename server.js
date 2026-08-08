@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = fileURLToPath(new URL('.', import.meta.url));
 const PORT = Number(process.env.PORT) || 3000;
 // The site's entry page, served at "/". Override with ENTRY=other.html npm run dev
-const ENTRY = process.env.ENTRY || 'AUREQON.dc.html';
+const ENTRY = process.env.ENTRY || 'index.html';
 const DIR_INDEX = [ENTRY, 'index.html']; // index.html kept as a conventional fallback
 
 const MIME = {
